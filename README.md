@@ -11,20 +11,21 @@ Before running the application, ensure you have the following installed:
 ## Setup Instructions
 
 ### 1. Clone the repository
-```bash
+```
 git clone https://github.com/estebanp22/parcial-apps-1.git
 ```
 
 ### 2. Configure the database
 The project uses **MySQL** inside a Docker container. To start the database, run:
-```bash
-docker-compose up -d
+```
+docker compose build --no-cache
+docker compose up -d
 ```
 This will start MySQL on port **5500** with the necessary configurations.
 
 ### 3. Update application.properties (if needed)
 By default, the application is configured to connect to MySQL on port **5500**. If needed, update the database credentials in `src/main/resources/application.properties`:
-```properties
+```
 spring.datasource.url=jdbc:mysql://localhost:5500/restobar?useSSL=false&serverTimezone=UTC
 spring.datasource.username=esteban
 spring.datasource.password=2210
