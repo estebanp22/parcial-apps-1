@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  db:
+    build: 
+      context: ./MySQL
+      dockerfile: Dockerfile
+    container_name: mysql_restobar
+    restart: always
+    ports:
+      - 5500:3306
+    volumes:
+      - ./Config/mysql:/var/lib/mysql
+    hostname: restobar_database
+    networks:
+      - restobar_net
+    healthcheck:
+      test: ["CMD", "mysql", "-u", "root", "-p2210"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  adminer:
+    image: adminer
+    container_name: adminer_restobar
+    restart: always
+    ports:
+      - 8000:8080
+    networks:
+      - restobar_net
+
+
+networks:
+  restobar_net:
+    driver: bridge

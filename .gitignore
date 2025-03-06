@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Config folder generated when building the Docker container
+Docker/Config/
